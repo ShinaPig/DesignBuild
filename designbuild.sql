@@ -31,7 +31,7 @@ CREATE TABLE `administrator`  (
 -- ----------------------------
 -- Records of administrator
 -- ----------------------------
-INSERT INTO `administrator` VALUES (1, 'admin\r\n', 'admin');
+INSERT INTO `administrator` VALUES (1, 'admin', 'admin');
 INSERT INTO `administrator` VALUES (2, 'Davis', '244545083');
 
 -- ----------------------------
