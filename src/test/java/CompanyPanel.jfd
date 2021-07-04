@@ -1,0 +1,126 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"title": "Company System"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "panel2"
+				add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+					name: "tabbedPane1"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panel6"
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+							name: "panel10"
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+								"$columnCount": 3
+								"$rowCount": 1
+							} ) {
+								name: "panel11"
+								add( new FormComponent( "javax.swing.JButton" ) {
+									name: "button11"
+									"text": "Acquire"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+								add( new FormComponent( "javax.swing.JButton" ) {
+									name: "button12"
+									"text": "Add"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 1
+								} )
+								add( new FormComponent( "javax.swing.JButton" ) {
+									name: "button13"
+									"text": "Delete"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 2
+								} )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "South"
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "Device Management"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panel12"
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+							name: "panel13"
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+								"$columnCount": 3
+								"$rowCount": 1
+							} ) {
+								name: "panel14"
+								add( new FormComponent( "javax.swing.JButton" ) {
+									name: "button15"
+									"text": "Acquire"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+								add( new FormComponent( "javax.swing.JButton" ) {
+									name: "button16"
+									"text": "Add"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 1
+								} )
+								add( new FormComponent( "javax.swing.JButton" ) {
+									name: "button17"
+									"text": "Delete"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 2
+								} )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "South"
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "Category Management"
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						name: "panel15"
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+							name: "panel16"
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+								"$columnCount": 3
+								"$rowCount": 1
+							} ) {
+								name: "panel17"
+								add( new FormComponent( "javax.swing.JButton" ) {
+									name: "button18"
+									"text": "Acquire"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+								add( new FormComponent( "javax.swing.JButton" ) {
+									name: "button19"
+									"text": "Add"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 1
+								} )
+								add( new FormComponent( "javax.swing.JButton" ) {
+									name: "button20"
+									"text": "Delete"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 2
+								} )
+							}, new FormLayoutConstraints( class java.lang.String ) {
+								"value": "South"
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
+					}, new FormLayoutConstraints( null ) {
+						"title": "Data Management"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 10 )
+			"size": new java.awt.Dimension( 935, 650 )
+		} )
+	}
+}

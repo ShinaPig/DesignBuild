@@ -1,0 +1,71 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.10" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.GridLayout ) {
+			"columns": 1
+		} ) {
+			name: "this"
+			"background": new java.awt.Color( 255, 255, 255, 255 )
+			"defaultCloseOperation": 2
+			"title": "Management System"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+				"columns": 1
+				"rows": 4
+			} ) {
+				name: "panel1"
+				"background": new java.awt.Color( 255, 255, 255, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Welcome to Mangament System"
+					"horizontalAlignment": 0
+					"font": new java.awt.Font( "Sarasa UI SC", 0, 22 )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"vgap": 15
+				} ) {
+					name: "panel2"
+					"background": &Color0 new java.awt.Color( 255, 255, 255, 255 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "Username:"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "username"
+						"columns": 20
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"vgap": 15
+				} ) {
+					name: "panel3"
+					"background": #Color0
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "Password:"
+					} )
+					add( new FormComponent( "javax.swing.JPasswordField" ) {
+						name: "password"
+						"columns": 20
+						"font": new java.awt.Font( "Sarasa UI SC", 0, 14 )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"vgap": 10
+				} ) {
+					name: "panel4"
+					"background": #Color0
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button1"
+						"text": "Login"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+					} )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 280, 120 )
+			"size": new java.awt.Dimension( 485, 360 )
+		} )
+	}
+}
