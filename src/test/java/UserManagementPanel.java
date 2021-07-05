@@ -104,6 +104,7 @@ public class UserManagementPanel extends JPanel {
 
         //======== scrollPane1 ========
         {
+            scrollPane1.setPreferredSize(new Dimension(453, 400));
             scrollPane1.setViewportView(table1);
         }
         add(scrollPane1, BorderLayout.NORTH);
