@@ -21,7 +21,7 @@ new FormModel {
 							name: "panel7"
 							add( new FormComponent( "javax.swing.JButton" ) {
 								name: "button5"
-								"text": "Acquire"
+								"text": "Search"
 							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
 							add( new FormComponent( "javax.swing.JButton" ) {
 								name: "button14"
@@ -44,36 +44,213 @@ new FormModel {
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "South"
 						} )
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "scrollPane1"
+							add( new FormComponent( "javax.swing.JTable" ) {
+								name: "table1"
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "North"
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+							"$columnCount": 2
+							"$rowCount": 2
+						} ) {
+							name: "panel18"
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+								"$columnCount": 2
+								"$rowCount": 1
+							} ) {
+								name: "panel19"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label2"
+									"text": "userid:"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField2"
+									"columns": 8
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 1
+								} )
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+								"$columnCount": 2
+								"$rowCount": 1
+							} ) {
+								name: "panel20"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label3"
+									"text": "username:"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField3"
+									"columns": 8
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 1
+								} )
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+								"column": 1
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+								"$columnCount": 2
+								"$rowCount": 1
+							} ) {
+								name: "panel21"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label4"
+									"text": "password:"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+								add( new FormComponent( "javax.swing.JPasswordField" ) {
+									name: "textField4"
+									"columns": 8
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 1
+								} )
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+								"row": 1
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+								"$columnCount": 2
+								"$rowCount": 1
+							} ) {
+								name: "panel22"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label5"
+									"text": "familyid:"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField5"
+									"columns": 8
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 1
+								} )
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+								"column": 1
+								"row": 1
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "Center"
+						} )
 					}, new FormLayoutConstraints( null ) {
 						"title": "User Management"
 					} )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 						name: "panel5"
-						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+							"$columnCount": 4
+							"$rowCount": 1
+							"hGap": 0
+							"vGap": 0
+						} ) {
 							name: "panel8"
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button8"
+								"text": "Search"
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button21"
+								"text": "Reset Password"
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+								"column": 1
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button9"
+								"text": "Add"
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+								"column": 2
+							} )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button10"
+								"text": "Delete"
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+								"column": 3
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "South"
+						} )
+						add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+							name: "scrollPane2"
+							add( new FormComponent( "javax.swing.JTable" ) {
+								name: "table2"
+							} )
+						}, new FormLayoutConstraints( class java.lang.String ) {
+							"value": "North"
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+							"$columnCount": 2
+							"$rowCount": 2
+						} ) {
+							name: "panel23"
 							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
-								"$columnCount": 3
+								"$columnCount": 2
 								"$rowCount": 1
 							} ) {
-								name: "panel9"
-								add( new FormComponent( "javax.swing.JButton" ) {
-									name: "button8"
-									"text": "Acquire"
+								name: "panel24"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label6"
+									"text": "userid:"
 								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
-								add( new FormComponent( "javax.swing.JButton" ) {
-									name: "button9"
-									"text": "Add"
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField6"
+									"columns": 8
 								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 									"column": 1
 								} )
-								add( new FormComponent( "javax.swing.JButton" ) {
-									name: "button10"
-									"text": "Delete"
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+								"$columnCount": 2
+								"$rowCount": 1
+							} ) {
+								name: "panel25"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label7"
+									"text": "username:"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField7"
+									"columns": 8
 								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
-									"column": 2
+									"column": 1
 								} )
-							}, new FormLayoutConstraints( class java.lang.String ) {
-								"value": "South"
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+								"column": 1
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+								"$columnCount": 2
+								"$rowCount": 1
+							} ) {
+								name: "panel26"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label8"
+									"text": "password:"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+								add( new FormComponent( "javax.swing.JPasswordField" ) {
+									name: "textField8"
+									"columns": 8
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 1
+								} )
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+								"row": 1
+							} )
+							add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+								"$columnCount": 2
+								"$rowCount": 1
+							} ) {
+								name: "panel27"
+								add( new FormComponent( "javax.swing.JLabel" ) {
+									name: "label9"
+									"text": "familyid:"
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+								add( new FormComponent( "javax.swing.JTextField" ) {
+									name: "textField9"
+									"columns": 8
+								}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+									"column": 1
+								} )
+							}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+								"column": 1
+								"row": 1
 							} )
 						}, new FormLayoutConstraints( class java.lang.String ) {
 							"value": "Center"

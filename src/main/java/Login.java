@@ -19,14 +19,28 @@ public class Login extends JFrame {
     public String JDBC_PASSWORD = "root";
     private void button1ActionPerformed(ActionEvent e) {
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
-            System.out.println("OK");
             try (PreparedStatement ps = conn.prepareStatement("SELECT * FROM administrator WHERE adminname=? AND password=?")) {
                 ps.setString(1, username.getText().trim()); // 注意：索引从1开始
                 ps.setString(2, String.valueOf(password.getPassword()));
-                System.out.println(ps);
                 try (ResultSet rs = ps.executeQuery()) {
                     if (rs.next()) {
                         new AdminPanel();
+                        this.dispose();
+                    }
+                    else{
+                        try (PreparedStatement ps2 = conn.prepareStatement("SELECT * FROM company WHERE companyname=? AND password=?")) {
+                            ps2.setString(1,username.getText().trim());
+                            ps2.setString(2,String.valueOf(password.getPassword()));
+                            try(ResultSet rs2 = ps2.executeQuery()){
+                                if(rs2.next()){
+                                    new CompanyPanel();
+                                    this.dispose();
+                                }
+                                else{
+                                    new JOptionPane().showMessageDialog(null, "Username or Password is wrong!", "Login Error", JOptionPane.WARNING_MESSAGE);
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -57,7 +71,7 @@ public class Login extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBackground(Color.white);
+            //panel1.setBackground(Color.white);
             panel1.setLayout(new GridLayout(4, 1));
 
             //---- label1 ----
@@ -68,7 +82,7 @@ public class Login extends JFrame {
 
             //======== panel2 ========
             {
-                panel2.setBackground(Color.white);
+                //panel2.setBackground(Color.white);
                 panel2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 15));
 
                 //---- textField4 ----
@@ -83,7 +97,7 @@ public class Login extends JFrame {
 
             //======== panel3 ========
             {
-                panel3.setBackground(Color.white);
+                //panel3.setBackground(Color.white);
                 panel3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 15));
 
                 //---- textField3 ----
@@ -98,7 +112,7 @@ public class Login extends JFrame {
 
             //======== panel4 ========
             {
-                panel4.setBackground(Color.white);
+                //panel4.setBackground(Color.white);
                 panel4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 10));
 
                 //---- button1 ----
@@ -109,6 +123,7 @@ public class Login extends JFrame {
             panel1.add(panel4);
         }
         contentPane.add(panel1);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
         setLocationRelativeTo(getOwner());
         setSize(500,300);
