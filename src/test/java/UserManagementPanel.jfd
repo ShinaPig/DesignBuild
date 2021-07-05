@@ -13,7 +13,7 @@ new FormModel {
 			} ) {
 				name: "panel7"
 				"minimumSize": new java.awt.Dimension( 197, 35 )
-				"preferredSize": new java.awt.Dimension( 197, 35 )
+				"preferredSize": new java.awt.Dimension( 197, 40 )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "button14"
 					"text": "Reset"
@@ -57,6 +57,8 @@ new FormModel {
 					"$rowCount": 2
 				} ) {
 					name: "panel18"
+					"minimumSize": new java.awt.Dimension( 193, 50 )
+					"preferredSize": new java.awt.Dimension( 332, 50 )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
 						"$columnCount": 2
 						"$rowCount": 1
@@ -136,6 +138,7 @@ new FormModel {
 					"$rowCount": 1
 				} ) {
 					name: "this2"
+					"preferredSize": new java.awt.Dimension( 174, 40 )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "searchtext"
 					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
@@ -164,7 +167,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 600, 760 )
+			"size": new java.awt.Dimension( 600, 625 )
 		} )
 	}
 }

@@ -1,6 +1,13 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 import com.intellij.uiDesigner.core.*;
 /*
  * Created by JFormDesigner on Mon Jul 05 20:35:21 CST 2021
@@ -12,6 +19,9 @@ import com.intellij.uiDesigner.core.*;
  * @author ziyue ji
  */
 public class UserManagementPanel extends JPanel {
+    final public String JDBC_URL = "jdbc:mysql://localhost:3306/designbuild";
+    final public String JDBC_USER = "root";
+    final public String JDBC_PASSWORD = "root";
     public UserManagementPanel() {
         initComponents();
     }
@@ -54,7 +64,7 @@ public class UserManagementPanel extends JPanel {
         //======== panel7 ========
         {
             panel7.setMinimumSize(new Dimension(197, 35));
-            panel7.setPreferredSize(new Dimension(197, 35));
+            panel7.setPreferredSize(new Dimension(197, 40));
             panel7.setLayout(new GridLayoutManager(1, 6, new Insets(0, 0, 0, 0), 0, 0));
 
             //---- button14 ----
@@ -104,6 +114,8 @@ public class UserManagementPanel extends JPanel {
 
             //======== panel18 ========
             {
+                panel18.setMinimumSize(new Dimension(193, 50));
+                panel18.setPreferredSize(new Dimension(332, 50));
                 panel18.setLayout(new GridLayoutManager(2, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                 //======== panel19 ========
@@ -214,6 +226,7 @@ public class UserManagementPanel extends JPanel {
 
             //======== this2 ========
             {
+                this2.setPreferredSize(new Dimension(174, 40));
                 this2.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
                 this2.add(searchtext, new GridConstraints(0, 0, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
@@ -246,7 +259,64 @@ public class UserManagementPanel extends JPanel {
         add(panel1, BorderLayout.CENTER);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-
+    public Object[][] queryUserData(java.util.List<User> list) {
+//        java.util.List<User> list=this.queryAllUser();
+        Object[][] data=new Object[list.size()][4];
+        for(int i=0;i<list.size();i++){
+            for(int j=1;j<=4;j++){
+                data[i][0]=list.get(i).getUserid();
+                data[i][1]=list.get(i).getUsername();
+                data[i][2]=list.get(i).getPassword();
+                data[i][3]=list.get(i).getFamilyid();
+            }
+        }
+        return data;
+    }
+    public java.util.List<User> queryAllUser(){
+        String sql="select * from user";
+        List<User> list=new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        User user=new User();
+                        user.setUserid(rs.getInt(1));
+                        user.setUsername(rs.getString(2));
+                        user.setPassword(rs.getString(3));
+                        user.setFamilyid(rs.getInt(4));
+                        list.add(user);
+                    }
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+    private void searchbuttonActionPerformed(ActionEvent e) {
+        String sql=null;
+        if(searchbox.getSelectedIndex()==0)sql="SELECT * FROM user WHERE userid=?";
+        if(searchbox.getSelectedIndex()==1)sql="SELECT * FROM user WHERE username=?";
+        if(searchbox.getSelectedIndex()==2)sql="SELECT * FROM user WHERE familyid=?";
+        List<User> list=new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, searchtext.getText().trim()); // 注意：索引从1开始
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        User user=new User();
+                        user.setUserid(rs.getInt(1));
+                        user.setUsername(rs.getString(2));
+                        user.setPassword(rs.getString(3));
+                        user.setFamilyid(rs.getInt(4));
+                        list.add(user);
+                    }
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panel7;
     private JButton button14;
