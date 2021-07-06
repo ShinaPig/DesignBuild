@@ -26,13 +26,10 @@ public class UserManagementPanel extends JPanel {
         initComponents();
     }
 
-    private void button6ActionPerformed(ActionEvent e) {
-        // TODO add your code here
-    }
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel7 = new JPanel();
+        button2 = new JButton();
         button14 = new JButton();
         button1 = new JButton();
         button6 = new JButton();
@@ -65,11 +62,21 @@ public class UserManagementPanel extends JPanel {
         {
             panel7.setMinimumSize(new Dimension(197, 35));
             panel7.setPreferredSize(new Dimension(197, 40));
-            panel7.setLayout(new GridLayoutManager(1, 4, new Insets(0, 0, 0, 0), 0, 0));
+            panel7.setLayout(new GridLayoutManager(1, 5, new Insets(0, 0, 0, 0), 0, 0));
+
+            //---- button2 ----
+            button2.setText("Refresh");
+            button2.addActionListener(e -> button2ActionPerformed(e));
+            panel7.add(button2, new GridConstraints(0, 0, 1, 1,
+                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
+                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                    null, null, null));
 
             //---- button14 ----
             button14.setText("Reset");
-            panel7.add(button14, new GridConstraints(0, 0, 1, 1,
+            button14.addActionListener(e -> button14ActionPerformed(e));
+            panel7.add(button14, new GridConstraints(0, 1, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -77,7 +84,8 @@ public class UserManagementPanel extends JPanel {
 
             //---- button1 ----
             button1.setText("Add");
-            panel7.add(button1, new GridConstraints(0, 1, 1, 1,
+            button1.addActionListener(e -> button1ActionPerformed(e));
+            panel7.add(button1, new GridConstraints(0, 2, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -86,7 +94,7 @@ public class UserManagementPanel extends JPanel {
             //---- button6 ----
             button6.setText("Update");
             button6.addActionListener(e -> button6ActionPerformed(e));
-            panel7.add(button6, new GridConstraints(0, 2, 1, 1,
+            panel7.add(button6, new GridConstraints(0, 3, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -94,7 +102,7 @@ public class UserManagementPanel extends JPanel {
 
             //---- button7 ----
             button7.setText("Delete");
-            panel7.add(button7, new GridConstraints(0, 3, 1, 1,
+            panel7.add(button7, new GridConstraints(0, 4, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -107,17 +115,26 @@ public class UserManagementPanel extends JPanel {
             String[] usercol = new String[] {
                     "userid", "username", "password", "familyid",
             };
-            DefaultTableModel tableModel=new DefaultTableModel(queryUserData(queryAllUser()),usercol);
+            DefaultTableModel tableModel=new DefaultTableModel(queryUserData(queryAllUser()),usercol){
+
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    //all cells false
+                    return false;
+                }
+            };
             Usertable.setModel(tableModel);
             ListSelectionModel selectionModel = Usertable.getSelectionModel();
             selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             selectionModel.addListSelectionListener(new ListSelectionListener() {
                 public void valueChanged(ListSelectionEvent e) {
                     int[] selectedRow = Usertable.getSelectedRows();
-                    textField2.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 0)));
-                    textField3.setText((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 1));
-                    textField4.setText((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 2));
-                    textField5.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 3)));
+                    if(selectedRow.length!=0){
+                        textField2.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 0)));
+                        textField3.setText((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 1));
+                        textField4.setText((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 2));
+                        textField5.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 3)));
+                    }
                 }
             });
             scrollPane1.setPreferredSize(new Dimension(453, 400));
@@ -149,6 +166,7 @@ public class UserManagementPanel extends JPanel {
 
                     //---- textField2 ----
                     textField2.setColumns(8);
+                    textField2.setEditable(false);
                     panel19.add(textField2, new GridConstraints(0, 1, 1, 1,
                             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -265,6 +283,7 @@ public class UserManagementPanel extends JPanel {
 
                 //---- searchbutton ----
                 searchbutton.setText("Search");
+                searchbutton.addActionListener(e->searchbuttonActionPerformed(e));
                 this2.add(searchbutton, new GridConstraints(0, 2, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -318,7 +337,9 @@ public class UserManagementPanel extends JPanel {
         List<User> list=new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                ps.setString(1, searchtext.getText().trim()); // 注意：索引从1开始
+                if(searchbox.getSelectedIndex()==0)ps.setInt(1, Integer.valueOf(searchtext.getText().trim())); // 注意：索引从1开始
+                if(searchbox.getSelectedIndex()==1)ps.setString(1, (searchtext.getText().trim())); // 注意：索引从1开始
+                if(searchbox.getSelectedIndex()==2)ps.setInt(1, Integer.valueOf(searchtext.getText().trim())); // 注意：索引从1开始
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
                         User user=new User();
@@ -328,14 +349,103 @@ public class UserManagementPanel extends JPanel {
                         user.setFamilyid(rs.getInt(4));
                         list.add(user);
                     }
+                    String[] usercol = new String[] {
+                            "userid", "username", "password", "familyid",
+                    };
+                    DefaultTableModel tableModel=new DefaultTableModel(queryUserData(list),usercol){
+
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                            //all cells false
+                            return false;
+                        }
+                    };
+                    Usertable.setModel(tableModel);
                 }
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
+    private void button2ActionPerformed(ActionEvent e) {
+        String sql=null;
+        sql="SELECT * FROM user";
+        List<User> list=new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        User user=new User();
+                        user.setUserid(rs.getInt(1));
+                        user.setUsername(rs.getString(2));
+                        user.setPassword(rs.getString(3));
+                        user.setFamilyid(rs.getInt(4));
+                        list.add(user);
+                    }
+                    String[] usercol = new String[] {
+                            "userid", "username", "password", "familyid",
+                    };
+                    DefaultTableModel tableModel=new DefaultTableModel(queryUserData(list),usercol){
+
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                            //all cells false
+                            return false;
+                        }
+                    };
+                    Usertable.setModel(tableModel);
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    private void button14ActionPerformed(ActionEvent e) {
+        if(JOptionPane.showConfirmDialog(null, "Sure to reset the password?", "Reset Password",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
+        {
+            String sql = null;
+            sql = "UPDATE user SET password = '123456789' WHERE userid=?";
+            List<User> list = new ArrayList<>();
+            try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+                try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                    ps.setInt(1, Integer.valueOf(textField2.getText().trim()));
+                    int n = ps.executeUpdate();
+                    if(n!=0)JOptionPane.showMessageDialog(null, "Reset password successfully!");
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+    private void button6ActionPerformed(ActionEvent e) {
+        if(JOptionPane.showConfirmDialog(null, "Sure to update the user information?", "Update",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
+        {
+            String sql = null;
+            sql = "UPDATE user SET username=? , password = ? , familyid = ? WHERE userid=?";
+            List<User> list = new ArrayList<>();
+            try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+                try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                    ps.setString(1, textField3.getText());
+                    ps.setString(2, String.valueOf(textField4.getPassword()));
+                    ps.setInt(3, Integer.valueOf(textField5.getText().trim()));
+                    ps.setInt(4, Integer.valueOf(textField2.getText().trim()));
+                    if(textField3.getText().isEmpty()||String.valueOf(textField4.getPassword()).isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
+                    else{int n = ps.executeUpdate();
+                    if(n!=0)JOptionPane.showMessageDialog(null, "Update the user information successfully!");}
+                } catch (SQLException throwables) {
+                    JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
+                    throwables.printStackTrace();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panel7;
+    private JButton button2;
     private JButton button14;
     private JButton button1;
     private JButton button6;

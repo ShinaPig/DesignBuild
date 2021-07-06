@@ -33,6 +33,7 @@ public class UserManagementPanel extends JPanel {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel7 = new JPanel();
+        button2 = new JButton();
         button14 = new JButton();
         button1 = new JButton();
         button6 = new JButton();
@@ -66,6 +67,14 @@ public class UserManagementPanel extends JPanel {
             panel7.setMinimumSize(new Dimension(197, 35));
             panel7.setPreferredSize(new Dimension(197, 40));
             panel7.setLayout(new GridLayoutManager(1, 6, new Insets(0, 0, 0, 0), 0, 0));
+
+            //---- button2 ----
+            button2.setText("Refresh");
+            panel7.add(button2, new GridConstraints(0, 1, 1, 1,
+                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                null, null, null));
 
             //---- button14 ----
             button14.setText("Reset");
@@ -133,6 +142,7 @@ public class UserManagementPanel extends JPanel {
 
                     //---- textField2 ----
                     textField2.setColumns(8);
+                    textField2.setEditable(false);
                     panel19.add(textField2, new GridConstraints(0, 1, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -320,6 +330,7 @@ public class UserManagementPanel extends JPanel {
     }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panel7;
+    private JButton button2;
     private JButton button14;
     private JButton button1;
     private JButton button6;

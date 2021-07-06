@@ -37,7 +37,7 @@ public class Login extends JFrame {
                                     this.dispose();
                                 }
                                 else{
-                                    new JOptionPane().showMessageDialog(null, "Username or Password is wrong!", "Login Error", JOptionPane.WARNING_MESSAGE);
+                                    new JOptionPane().showMessageDialog(null, "Username or Password is wrong!", "Login Error", JOptionPane.ERROR_MESSAGE);
                                 }
                             }
                         }
