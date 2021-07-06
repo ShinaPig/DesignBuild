@@ -1,0 +1,158 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.11" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+			"$columnCount": 1
+			"$rowCount": 8
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 1
+			} ) {
+				name: "panel15"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label6"
+					"text": "Deviceid:"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textField6"
+					"columns": 10
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 1
+			} ) {
+				name: "panel16"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label7"
+					"text": "StartTime:"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+				add( new FormComponent( "javax.swing.JSpinner" ) {
+					name: "spinner3"
+					"model": new javax.swing.SpinnerDateModel {
+						calendarField: 13
+						value: new java.util.Date( -9223372036854775808l )
+					}
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 1
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 1
+			} ) {
+				name: "panel17"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label8"
+					"text": "EndTime:"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+				add( new FormComponent( "javax.swing.JSpinner" ) {
+					name: "spinner4"
+					"model": new javax.swing.SpinnerDateModel {
+						calendarField: 13
+						value: new java.util.Date( -9223372036854775808l )
+					}
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 2
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 1
+			} ) {
+				name: "panel18"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label9"
+					"text": "Division:"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textField7"
+					"columns": 10
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 3
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 1
+			} ) {
+				name: "panel19"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label10"
+					"text": "Less:"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textField8"
+					"columns": 10
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 4
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 1
+			} ) {
+				name: "panel20"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label11"
+					"text": "Equals:"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textField9"
+					"columns": 10
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 5
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 1
+			} ) {
+				name: "panel21"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label12"
+					"text": "Greater:"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "textField10"
+					"columns": 10
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+				} )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 6
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 1
+				"$rowCount": 1
+			} ) {
+				name: "panel22"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button2"
+					"text": "Search"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+			}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+				"row": 7
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 420, 360 )
+		} )
+	}
+}

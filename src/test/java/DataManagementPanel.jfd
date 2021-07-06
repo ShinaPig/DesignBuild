@@ -8,17 +8,38 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
 				name: "tabbedPane1"
 				"tabPlacement": 3
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
-					name: "panel1"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+					"$columnCount": 2
+					"$rowCount": 3
+				} ) {
+					name: "panel22"
 				}, new FormLayoutConstraints( null ) {
-					"title": "text"
+					"title": "Detail"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+					"$columnCount": 2
+					"$rowCount": 3
+				} ) {
+					name: "panel23"
+				}, new FormLayoutConstraints( null ) {
+					"title": "Compare"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "Distribution"
+				}, new FormLayoutConstraints( null ) {
+					"title": "Distribution"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "Summary"
+				}, new FormLayoutConstraints( null ) {
+					"title": "Summary"
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 545, 380 )
+			"size": new java.awt.Dimension( 545, 435 )
 		} )
 	}
 }

@@ -1,0 +1,104 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.11" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				"preferredSize": new java.awt.Dimension( 453, 380 )
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "table1"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+				"rows": 2
+				"columns": 1
+			} ) {
+				name: "panel5"
+				"preferredSize": new java.awt.Dimension( 20, 90 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+					"$columnCount": 2
+					"$rowCount": 1
+				} ) {
+					name: "panel10"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+						"$columnCount": 2
+						"$rowCount": 1
+					} ) {
+						name: "panel12"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label4"
+							"text": "StartTime:"
+						}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "spinner1"
+							"model": new javax.swing.SpinnerDateModel {
+								calendarField: 13
+								value: new java.util.Date( -9223372036854775808l )
+							}
+						}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+							"column": 1
+						} )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+						"$columnCount": 2
+						"$rowCount": 1
+					} ) {
+						name: "panel13"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label5"
+							"text": "EndTime:"
+						}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+						add( new FormComponent( "javax.swing.JSpinner" ) {
+							name: "spinner2"
+							"model": new javax.swing.SpinnerDateModel {
+								calendarField: 13
+								value: new java.util.Date( -9223372036854775808l )
+							}
+						}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+							"column": 1
+						} )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 1
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+					"$columnCount": 3
+					"$rowCount": 1
+				} ) {
+					name: "panel11"
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField1"
+						"columns": 8
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "comboBox1"
+						"model": new javax.swing.DefaultComboBoxModel {
+							selectedItem: "deviceid"
+							addElement( "deviceid" )
+							addElement( "categoryid" )
+							addElement( "familyid" )
+						}
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 1
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button1"
+						"text": "Search"
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 2
+					} )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "South"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 485, 345 )
+		} )
+	}
+}

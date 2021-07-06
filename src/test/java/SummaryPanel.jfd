@@ -1,0 +1,99 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.11" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 2
+				"$rowCount": 2
+			} ) {
+				name: "panel2"
+				"preferredSize": new java.awt.Dimension( 406, 80 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+					"$columnCount": 2
+					"$rowCount": 1
+				} ) {
+					name: "panel3"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": "StartTime:"
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+					add( new FormComponent( "javax.swing.JSpinner" ) {
+						name: "spinner1"
+						"model": new javax.swing.SpinnerDateModel {
+							calendarField: 13
+							value: new java.util.Date( -9223372036854775808l )
+						}
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 1
+					} )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+					"$columnCount": 2
+					"$rowCount": 1
+				} ) {
+					name: "panel4"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "EndTime:"
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+					add( new FormComponent( "javax.swing.JSpinner" ) {
+						name: "spinner2"
+						"model": new javax.swing.SpinnerDateModel {
+							calendarField: 13
+							value: new java.util.Date( -9223372036854775808l )
+						}
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 1
+					} )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+					"$columnCount": 2
+					"$rowCount": 1
+				} ) {
+					name: "panel5"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "Category:"
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "comboBox1"
+						"model": new javax.swing.DefaultComboBoxModel {
+							selectedItem: "humidity"
+							addElement( "humidity" )
+							addElement( "temperature" )
+							addElement( "open" )
+						}
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 1
+					} )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 1
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "Statistics"
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+					"row": 1
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "South"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) {
+				"columns": 1
+			} ) {
+				name: "panel6"
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 535, 300 )
+		} )
+	}
+}
