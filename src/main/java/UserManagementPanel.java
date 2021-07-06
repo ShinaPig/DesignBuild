@@ -102,6 +102,7 @@ public class UserManagementPanel extends JPanel {
 
             //---- button7 ----
             button7.setText("Delete");
+            button7.addActionListener(e -> button7ActionPerformed(e));
             panel7.add(button7, new GridConstraints(0, 4, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -429,13 +430,61 @@ public class UserManagementPanel extends JPanel {
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
                     ps.setString(1, textField3.getText());
                     ps.setString(2, String.valueOf(textField4.getPassword()));
-                    ps.setInt(3, Integer.valueOf(textField5.getText().trim()));
-                    ps.setInt(4, Integer.valueOf(textField2.getText().trim()));
+                    ps.setInt(3, Integer.parseInt(textField5.getText().trim()));
+                    ps.setInt(4, Integer.parseInt(textField2.getText().trim()));
                     if(textField3.getText().isEmpty()||String.valueOf(textField4.getPassword()).isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
                     if(n!=0)JOptionPane.showMessageDialog(null, "Update the user information successfully!");}
                 } catch (SQLException throwables) {
                     JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
+                    throwables.printStackTrace();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+    private void button1ActionPerformed(ActionEvent e) {
+        if(JOptionPane.showConfirmDialog(null, "Sure to add the user?", "Add",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
+        {
+            String sql = null;
+            sql = "INSERT INTO user (username, password, familyid) VALUES (?,?,?)";
+            List<User> list = new ArrayList<>();
+            try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+                try (PreparedStatement ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+                    ps.setString(1, textField3.getText());
+                    ps.setString(2, String.valueOf(textField4.getPassword()));
+                    ps.setInt(3, Integer.parseInt(textField5.getText().trim()));
+                    //ps.setInt(4, Integer.parseInt(textField2.getText().trim()));
+                    if(textField3.getText().isEmpty()||String.valueOf(textField4.getPassword()).isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
+                    else{int n = ps.executeUpdate();
+                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the user information successfully!");}
+                } catch (SQLException throwables) {
+                    JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
+                    throwables.printStackTrace();
+                }
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+    }
+    private void button7ActionPerformed(ActionEvent e) {
+        if(JOptionPane.showConfirmDialog(null, "Sure to delete the user?", "Delete",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
+        {
+            String sql = null;
+            sql = "DELETE FROM user WHERE userid=?";
+            List<User> list = new ArrayList<>();
+            try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+                try (PreparedStatement ps = conn.prepareStatement(sql)) {
+//                    ps.setString(1, textField3.getText());
+//                    ps.setString(2, String.valueOf(textField4.getPassword()));
+//                    ps.setInt(3, Integer.parseInt(textField5.getText().trim()));
+                    ps.setInt(1, Integer.parseInt(textField2.getText().trim()));
+//                    if(textField3.getText().isEmpty()||String.valueOf(textField4.getPassword()).isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
+                    int n = ps.executeUpdate();
+                    if(n!=0)JOptionPane.showMessageDialog(null, "Delete the user information successfully!");
+                } catch (SQLException throwables) {
+//                    JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
                     throwables.printStackTrace();
                 }
             } catch (SQLException throwables) {
