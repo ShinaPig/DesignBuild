@@ -11,7 +11,7 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 05/07/2021 13:07:33
+ Date: 06/07/2021 15:00:42
 */
 
 SET NAMES utf8mb4;
@@ -39,7 +39,7 @@ INSERT INTO `administrator` VALUES (2, 'Davis', '244545083');
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category`  (
-  `categoryid` int NOT NULL,
+  `categoryid` int NOT NULL AUTO_INCREMENT,
   `categoryname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`categoryid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
@@ -1296,16 +1296,16 @@ INSERT INTO `data` VALUES (1200, 'open', '0', '2020-05-12 06:46:19', 84);
 -- ----------------------------
 DROP TABLE IF EXISTS `device`;
 CREATE TABLE `device`  (
-  `deviceid` int NOT NULL,
+  `deviceid` int NOT NULL AUTO_INCREMENT,
   `devicename` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `categoryid` int NOT NULL,
   `familyid` int NOT NULL,
   `companyid` int NOT NULL,
   PRIMARY KEY (`deviceid`) USING BTREE,
-  INDEX `fk_device_category_1`(`categoryid`) USING BTREE,
-  INDEX `fk_device_family_1`(`familyid`) USING BTREE,
   INDEX `fk_device_company_1`(`companyid`) USING BTREE,
+  INDEX `fk_device_family_1`(`familyid`) USING BTREE,
+  INDEX `fk_device_category_1`(`categoryid`) USING BTREE,
   CONSTRAINT `fk_device_category_1` FOREIGN KEY (`categoryid`) REFERENCES `category` (`categoryid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_device_company_1` FOREIGN KEY (`companyid`) REFERENCES `company` (`companyid`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `fk_device_family_1` FOREIGN KEY (`familyid`) REFERENCES `family` (`familyid`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -1420,7 +1420,7 @@ INSERT INTO `device` VALUES (100, 'lorem,', 'ipsum', 3, 2, 2);
 -- ----------------------------
 DROP TABLE IF EXISTS `family`;
 CREATE TABLE `family`  (
-  `familyid` int NOT NULL,
+  `familyid` int NOT NULL AUTO_INCREMENT,
   `familyname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`familyid`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
@@ -1464,7 +1464,7 @@ INSERT INTO `family` VALUES (30, 'Henson');
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `userid` int NOT NULL,
+  `userid` int NOT NULL AUTO_INCREMENT,
   `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `familyid` int NOT NULL,
@@ -1476,8 +1476,8 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (5870468, 'Chadwick', '943022442', 11);
-INSERT INTO `user` VALUES (6665403, 'Rhona', '597021658', 10);
+INSERT INTO `user` VALUES (5870468, 'Chadwick', '123456789', 11);
+INSERT INTO `user` VALUES (6665403, 'Rhona', '123456789', 10);
 INSERT INTO `user` VALUES (6983450, 'Caesar', '365634112', 23);
 INSERT INTO `user` VALUES (7314765, 'Brynne', '497482703', 29);
 INSERT INTO `user` VALUES (7351819, 'Melodie', '248065732', 28);

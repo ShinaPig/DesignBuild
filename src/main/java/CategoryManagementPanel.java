@@ -1,28 +1,28 @@
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import com.intellij.uiDesigner.core.GridConstraints;
+import com.intellij.uiDesigner.core.GridLayoutManager;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-
-import com.intellij.uiDesigner.core.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 /*
  * Created by JFormDesigner on Mon Jul 05 20:35:21 CST 2021
  */
 
 
-
 /**
  * @author ziyue ji
  */
-public class FamilyManagementPanel extends JPanel {
+public class CategoryManagementPanel extends JPanel {
     final public String JDBC_URL = "jdbc:mysql://localhost:3306/designbuild";
     final public String JDBC_USER = "root";
     final public String JDBC_PASSWORD = "root";
-    public FamilyManagementPanel() {
+    public CategoryManagementPanel() {
         initComponents();
     }
 
@@ -105,7 +105,7 @@ public class FamilyManagementPanel extends JPanel {
         //======== scrollPane1 ========
         {
             String[] usercol = new String[] {
-                    "familyid", "famliyname",
+                    "categoryid", "famliyname",
             };
             DefaultTableModel tableModel=new DefaultTableModel(queryUserData(queryAllUser()),usercol){
 
@@ -147,7 +147,7 @@ public class FamilyManagementPanel extends JPanel {
                     panel19.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label2 ----
-                    label2.setText("familyid:");
+                    label2.setText("categoryid:");
                     panel19.add(label2, new GridConstraints(0, 0, 1, 1,
                             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -174,7 +174,7 @@ public class FamilyManagementPanel extends JPanel {
                     panel20.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label3 ----
-                    label3.setText("familyname:");
+                    label3.setText("categoryname:");
                     panel20.add(label3, new GridConstraints(0, 0, 1, 1,
                             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -210,8 +210,8 @@ public class FamilyManagementPanel extends JPanel {
 
                 //---- searchbox ----
                 searchbox.setModel(new DefaultComboBoxModel<>(new String[] {
-                        "familyid",
-                        "familyname",
+                        "categoryid",
+                        "categoryname",
                 }));
                 this2.add(searchbox, new GridConstraints(0, 1, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
@@ -233,26 +233,26 @@ public class FamilyManagementPanel extends JPanel {
         add(panel1, BorderLayout.CENTER);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-    public Object[][] queryUserData(java.util.List<Family> list) {
+    public Object[][] queryUserData(List<Category> list) {
 //        java.util.List<User> list=this.queryAllUser();
         Object[][] data=new Object[list.size()][2];
         for(int i=0;i<list.size();i++){
-            data[i][0]=list.get(i).getFamilyid();
-            data[i][1]=list.get(i).getFamilyname();
+            data[i][0]=list.get(i).getCategoryid();
+            data[i][1]=list.get(i).getCategoryname();
         }
         return data;
     }
-    public java.util.List<Family> queryAllUser(){
-        String sql="select * from family";
-        List<Family> list=new ArrayList<>();
+    public List<Category> queryAllUser(){
+        String sql="select * from category";
+        List<Category> list=new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
-                        Family family=new Family();
-                        family.setFamilyid(rs.getInt(1));
-                        family.setFamilyname(rs.getString(2));
-                        list.add(family);
+                        Category category=new Category();
+                        category.setCategoryid(rs.getInt(1));
+                        category.setCategoryname(rs.getString(2));
+                        list.add(category);
                     }
                 }
             }
@@ -263,22 +263,22 @@ public class FamilyManagementPanel extends JPanel {
     }
     private void searchbuttonActionPerformed(ActionEvent e) {
         String sql=null;
-        if(searchbox.getSelectedIndex()==0)sql="SELECT * FROM family WHERE familyid=?";
-        if(searchbox.getSelectedIndex()==1)sql="SELECT * FROM family WHERE familyname=?";
-        List<Family> list=new ArrayList<>();
+        if(searchbox.getSelectedIndex()==0)sql="SELECT * FROM category WHERE categoryid=?";
+        if(searchbox.getSelectedIndex()==1)sql="SELECT * FROM category WHERE categoryname=?";
+        List<Category> list=new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 if(searchbox.getSelectedIndex()==0)ps.setInt(1, Integer.valueOf(searchtext.getText().trim())); // 注意：索引从1开始
                 if(searchbox.getSelectedIndex()==1)ps.setString(1, (searchtext.getText().trim())); // 注意：索引从1开始
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
-                        Family family=new Family();
-                        family.setFamilyid(rs.getInt(1));
-                        family.setFamilyname(rs.getString(2));
-                        list.add(family);
+                        Category category=new Category();
+                        category.setCategoryid(rs.getInt(1));
+                        category.setCategoryname(rs.getString(2));
+                        list.add(category);
                     }
                     String[] usercol = new String[] {
-                            "familyid","familyname",
+                            "categoryid","categoryname",
                     };
                     DefaultTableModel tableModel=new DefaultTableModel(queryUserData(list),usercol){
 
@@ -297,19 +297,19 @@ public class FamilyManagementPanel extends JPanel {
     }
     private void button2ActionPerformed(ActionEvent e) {
         String sql=null;
-        sql="SELECT * FROM family";
-        List<Family> list=new ArrayList<>();
+        sql="SELECT * FROM category";
+        List<Category> list=new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
-                        Family family=new Family();
-                        family.setFamilyid(rs.getInt(1));
-                        family.setFamilyname(rs.getString(2));
-                        list.add(family);
+                        Category category=new Category();
+                        category.setCategoryid(rs.getInt(1));
+                        category.setCategoryname(rs.getString(2));
+                        list.add(category);
                     }
                     String[] usercol = new String[] {
-                            "familyid","familyname",
+                            "categoryid","categoryname",
                     };
                     DefaultTableModel tableModel=new DefaultTableModel(queryUserData(list),usercol){
 
@@ -327,18 +327,18 @@ public class FamilyManagementPanel extends JPanel {
         }
     }
     private void button6ActionPerformed(ActionEvent e) {
-        if(JOptionPane.showConfirmDialog(null, "Sure to update the family information?", "Update",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
+        if(JOptionPane.showConfirmDialog(null, "Sure to update the category information?", "Update",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
         {
             String sql = null;
-            sql = "UPDATE family SET familyname=? WHERE familyid=?";
-            List<Family> list = new ArrayList<>();
+            sql = "UPDATE category SET categoryname=? WHERE categoryid=?";
+            List<Category> list = new ArrayList<>();
             try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
                     ps.setString(1, textField3.getText());
                     ps.setInt(2, Integer.parseInt(textField2.getText().trim()));
                     if(textField3.getText().isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
-                        if(n!=0)JOptionPane.showMessageDialog(null, "Update the family information successfully!");}
+                        if(n!=0)JOptionPane.showMessageDialog(null, "Update the category information successfully!");}
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -348,18 +348,18 @@ public class FamilyManagementPanel extends JPanel {
         }
     }
     private void button1ActionPerformed(ActionEvent e) {
-        if(JOptionPane.showConfirmDialog(null, "Sure to add the family?", "Add",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
+        if(JOptionPane.showConfirmDialog(null, "Sure to add the category?", "Add",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
         {
             String sql = null;
-            sql = "INSERT INTO family (familyname) VALUES (?)";
-            List<Family> list = new ArrayList<>();
+            sql = "INSERT INTO category (categoryname) VALUES (?)";
+            List<Category> list = new ArrayList<>();
             try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
                 try (PreparedStatement ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
                     ps.setString(1, textField3.getText());
                     //ps.setInt(4, Integer.parseInt(textField2.getText().trim()));
                     if(textField3.getText().isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
-                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the family information successfully!");}
+                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the category information successfully!");}
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -369,41 +369,33 @@ public class FamilyManagementPanel extends JPanel {
         }
     }
     private void button7ActionPerformed(ActionEvent e) {
-        if(JOptionPane.showConfirmDialog(null, "Sure to delete the family?", "Delete",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
+        if(JOptionPane.showConfirmDialog(null, "Sure to delete the category?", "Delete",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
         {
             String sql = null;
-            sql = "DELETE user FROM user WHERE familyid=?";
 //            List<User> list = new ArrayList<>();
             try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+                sql = "DELETE data FROM data, device WHERE device.categoryid=? AND data.deviceid=device.deviceid";
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
                     ps.setInt(1, Integer.parseInt(textField2.getText().trim()));
                     ps.executeUpdate();
                 } catch (SQLException throwables) {
-//                    JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
+//                    JOptionPane.showMessageDialog(null, "Categoryid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
                     throwables.printStackTrace();
                 }
-                sql = "DELETE data FROM data, device WHERE device.familyid=? AND data.deviceid=device.deviceid";
+                sql = "DELETE device FROM device WHERE device.categoryid=?";
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
                     ps.setInt(1, Integer.parseInt(textField2.getText().trim()));
                     ps.executeUpdate();
                 } catch (SQLException throwables) {
-//                    JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
+//                    JOptionPane.showMessageDialog(null, "Categoryid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
                     throwables.printStackTrace();
                 }
-                sql = "DELETE device FROM device WHERE device.familyid=?";
-                try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                    ps.setInt(1, Integer.parseInt(textField2.getText().trim()));
-                    ps.executeUpdate();
-                } catch (SQLException throwables) {
-//                    JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
-                    throwables.printStackTrace();
-                }
-                sql = "DELETE family FROM family WHERE familyid=?";
+                sql = "DELETE category FROM category WHERE categoryid=?";
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
                     ps.setInt(1, Integer.parseInt(textField2.getText().trim()));
                     if(ps.executeUpdate()!=0)JOptionPane.showMessageDialog(null, "Delete the user information successfully!");
                 } catch (SQLException throwables) {
-//                    JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
+//                    JOptionPane.showMessageDialog(null, "Categoryid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
                     throwables.printStackTrace();
                 }
             } catch (SQLException throwables) {

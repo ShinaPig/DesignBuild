@@ -67,88 +67,12 @@ public class AdminPanel extends JFrame {
                 panel5 = new FamilyManagementPanel();
                 tabbedPane1.addTab("Family Management", panel5);
 
-                //======== panel6 ========
-                {
-                    panel6.setLayout(new BorderLayout());
-
-                    //======== panel10 ========
-                    {
-                        panel10.setLayout(new BorderLayout());
-
-                        //======== panel11 ========
-                        {
-                            panel11.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
-
-                            //---- button11 ----
-                            button11.setText("Acquire");
-                            panel11.add(button11, new GridConstraints(0, 0, 1, 1,
-                                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    null, null, null));
-
-                            //---- button12 ----
-                            button12.setText("Add");
-                            panel11.add(button12, new GridConstraints(0, 1, 1, 1,
-                                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    null, null, null));
-
-                            //---- button13 ----
-                            button13.setText("Delete");
-                            panel11.add(button13, new GridConstraints(0, 2, 1, 1,
-                                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    null, null, null));
-                        }
-                        panel10.add(panel11, BorderLayout.SOUTH);
-                    }
-                    panel6.add(panel10, BorderLayout.CENTER);
-                }
-                tabbedPane1.addTab("Device Management", panel6);
+                //======== DeviceManagementPanel ========
+               panel6 = new DeviceManagementPanel();
+               tabbedPane1.addTab("Device Management", panel6);
 
                 //======== panel12 ========
-                {
-                    panel12.setLayout(new BorderLayout());
-
-                    //======== panel13 ========
-                    {
-                        panel13.setLayout(new BorderLayout());
-
-                        //======== panel14 ========
-                        {
-                            panel14.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
-
-                            //---- button15 ----
-                            button15.setText("Acquire");
-                            panel14.add(button15, new GridConstraints(0, 0, 1, 1,
-                                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    null, null, null));
-
-                            //---- button16 ----
-                            button16.setText("Add");
-                            panel14.add(button16, new GridConstraints(0, 1, 1, 1,
-                                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    null, null, null));
-
-                            //---- button17 ----
-                            button17.setText("Delete");
-                            panel14.add(button17, new GridConstraints(0, 2, 1, 1,
-                                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    null, null, null));
-                        }
-                        panel13.add(panel14, BorderLayout.SOUTH);
-                    }
-                    panel12.add(panel13, BorderLayout.CENTER);
-                }
+                panel12 = new CategoryManagementPanel();
                 tabbedPane1.addTab("Category Management", panel12);
 
                 //======== panel15 ========

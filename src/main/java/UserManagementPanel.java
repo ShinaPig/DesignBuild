@@ -264,6 +264,7 @@ public class UserManagementPanel extends JPanel {
             {
                 this2.setPreferredSize(new Dimension(174, 40));
                 this2.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
+                searchtext.setColumns(8);
                 this2.add(searchtext, new GridConstraints(0, 0, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -300,12 +301,10 @@ public class UserManagementPanel extends JPanel {
 //        java.util.List<User> list=this.queryAllUser();
         Object[][] data=new Object[list.size()][4];
         for(int i=0;i<list.size();i++){
-            for(int j=1;j<=4;j++){
-                data[i][0]=list.get(i).getUserid();
-                data[i][1]=list.get(i).getUsername();
-                data[i][2]=list.get(i).getPassword();
-                data[i][3]=list.get(i).getFamilyid();
-            }
+            data[i][0]=list.get(i).getUserid();
+            data[i][1]=list.get(i).getUsername();
+            data[i][2]=list.get(i).getPassword();
+            data[i][3]=list.get(i).getFamilyid();
         }
         return data;
     }
