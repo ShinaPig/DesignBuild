@@ -1,10 +1,10 @@
-import java.awt.*;
+import com.intellij.uiDesigner.core.GridLayoutManager;
+
 import javax.swing.*;
-import com.intellij.uiDesigner.core.*;
+import java.awt.*;
 /*
  * Created by JFormDesigner on Tue Jul 06 20:20:16 CST 2021
  */
-
 
 
 /**
@@ -32,13 +32,13 @@ public class DataManagementPanel extends JPanel {
 
             //======== Detail ========
             {
-                Detail.setLayout(new GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1));
+                Detail = new DetailPanel();
             }
             tabbedPane1.addTab("Detail", Detail);
 
             //======== Compare ========
             {
-                Compare.setLayout(new GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1));
+                Compare = new ComparePanel();
             }
             tabbedPane1.addTab("Compare", Compare);
 

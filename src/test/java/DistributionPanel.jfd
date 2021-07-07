@@ -126,14 +126,5 @@ new FormModel {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 580, 390 )
 		} )
-		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
-			"$columnCount": 2
-			"$rowCount": 3
-		} ) {
-			name: "panel1"
-		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 650, 505 )
-			"size": new java.awt.Dimension( 200, 200 )
-		} )
 	}
 }

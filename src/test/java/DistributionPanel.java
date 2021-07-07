@@ -35,7 +35,6 @@ public class DistributionPanel extends JPanel {
         label3 = new JLabel();
         comboBox1 = new JComboBox();
         button1 = new JButton();
-        panel1 = new JPanel();
 
         //======== this ========
         setLayout(new BorderLayout());
@@ -187,11 +186,6 @@ public class DistributionPanel extends JPanel {
                 null, null, null));
         }
         add(panel2, BorderLayout.SOUTH);
-
-        //======== panel1 ========
-        {
-            panel1.setLayout(new GridLayoutManager(3, 2, new Insets(0, 0, 0, 0), -1, -1));
-        }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
 
@@ -214,6 +208,5 @@ public class DistributionPanel extends JPanel {
     private JLabel label3;
     private JComboBox comboBox1;
     private JButton button1;
-    private JPanel panel1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

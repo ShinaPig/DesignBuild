@@ -91,11 +91,12 @@ new FormModel {
 				name: "panel19"
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label10"
-					"text": "Less:"
+					"text": "Less number:"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "textField8"
 					"columns": 10
+					"editable": false
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"column": 1
 				} )
@@ -109,11 +110,12 @@ new FormModel {
 				name: "panel20"
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label11"
-					"text": "Equals:"
+					"text": "Equals number:"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "textField9"
 					"columns": 10
+					"editable": false
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"column": 1
 				} )
@@ -127,11 +129,12 @@ new FormModel {
 				name: "panel21"
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label12"
-					"text": "Greater:"
+					"text": "Greater number:"
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "textField10"
 					"columns": 10
+					"editable": false
 				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 					"column": 1
 				} )

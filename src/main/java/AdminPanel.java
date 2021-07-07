@@ -76,45 +76,7 @@ public class AdminPanel extends JFrame {
                 tabbedPane1.addTab("Category Management", panel12);
 
                 //======== panel15 ========
-                {
-                    panel15.setLayout(new BorderLayout());
-
-                    //======== panel16 ========
-                    {
-                        panel16.setLayout(new BorderLayout());
-
-                        //======== panel17 ========
-                        {
-                            panel17.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
-
-                            //---- button18 ----
-                            button18.setText("Acquire");
-                            panel17.add(button18, new GridConstraints(0, 0, 1, 1,
-                                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    null, null, null));
-
-                            //---- button19 ----
-                            button19.setText("Add");
-                            panel17.add(button19, new GridConstraints(0, 1, 1, 1,
-                                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    null, null, null));
-
-                            //---- button20 ----
-                            button20.setText("Delete");
-                            panel17.add(button20, new GridConstraints(0, 2, 1, 1,
-                                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                    null, null, null));
-                        }
-                        panel16.add(panel17, BorderLayout.SOUTH);
-                    }
-                    panel15.add(panel16, BorderLayout.CENTER);
-                }
+                panel15 = new DataManagementPanel();
                 tabbedPane1.addTab("Data Management", panel15);
             }
             panel2.add(tabbedPane1, BorderLayout.CENTER);

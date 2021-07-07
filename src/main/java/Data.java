@@ -3,7 +3,7 @@ import java.util.Date;
 public class Data {
     private int dataid;
     private String dataname;
-    private int value;
+    private double value;
     private Date time;
     private int deviceid;
 
@@ -23,11 +23,11 @@ public class Data {
         this.dataname = dataname;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(double value) {
         this.value = value;
     }
 

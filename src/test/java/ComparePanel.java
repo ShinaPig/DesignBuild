@@ -153,7 +153,7 @@ public class ComparePanel extends JPanel {
             panel19.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
             //---- label10 ----
-            label10.setText("Less:");
+            label10.setText("Less number:");
             panel19.add(label10, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -162,6 +162,7 @@ public class ComparePanel extends JPanel {
 
             //---- textField8 ----
             textField8.setColumns(10);
+            textField8.setEditable(false);
             panel19.add(textField8, new GridConstraints(0, 1, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -179,7 +180,7 @@ public class ComparePanel extends JPanel {
             panel20.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
             //---- label11 ----
-            label11.setText("Equals:");
+            label11.setText("Equals number:");
             panel20.add(label11, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -188,6 +189,7 @@ public class ComparePanel extends JPanel {
 
             //---- textField9 ----
             textField9.setColumns(10);
+            textField9.setEditable(false);
             panel20.add(textField9, new GridConstraints(0, 1, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -205,7 +207,7 @@ public class ComparePanel extends JPanel {
             panel21.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
             //---- label12 ----
-            label12.setText("Greater:");
+            label12.setText("Greater number:");
             panel21.add(label12, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -214,6 +216,7 @@ public class ComparePanel extends JPanel {
 
             //---- textField10 ----
             textField10.setColumns(10);
+            textField10.setEditable(false);
             panel21.add(textField10, new GridConstraints(0, 1, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
