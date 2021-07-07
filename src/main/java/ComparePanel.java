@@ -61,7 +61,7 @@ public class ComparePanel extends JPanel {
             panel15.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
             //---- label6 ----
-            label6.setText("Deviceid:");
+            label6.setText("          Deviceid:");
             panel15.add(label6, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -87,7 +87,7 @@ public class ComparePanel extends JPanel {
             panel16.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
             //---- label7 ----
-            label7.setText("StartTime:");
+            label7.setText("         StartTime:");
             panel16.add(label7, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -113,7 +113,7 @@ public class ComparePanel extends JPanel {
             panel17.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
             //---- label8 ----
-            label8.setText("EndTime:");
+            label8.setText("         EndTime:");
             panel17.add(label8, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -139,7 +139,7 @@ public class ComparePanel extends JPanel {
             panel18.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
             //---- label9 ----
-            label9.setText("Division:");
+            label9.setText("            Division:");
             panel18.add(label9, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -165,7 +165,7 @@ public class ComparePanel extends JPanel {
             panel19.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
             //---- label10 ----
-            label10.setText("Less number:");
+            label10.setText("    Less number:");
             panel19.add(label10, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -192,7 +192,7 @@ public class ComparePanel extends JPanel {
             panel20.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
             //---- label11 ----
-            label11.setText("Equals number:");
+            label11.setText(" Equals number:");
             panel20.add(label11, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,

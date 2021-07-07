@@ -174,7 +174,7 @@ public class UserManagementPanel extends JPanel {
                     panel19.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label2 ----
-                    label2.setText("userid:");
+                    label2.setText("     userid:");
                     panel19.add(label2, new GridConstraints(0, 0, 1, 1,
                             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -254,7 +254,7 @@ public class UserManagementPanel extends JPanel {
                     panel22.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label5 ----
-                    label5.setText("familyid:");
+                    label5.setText("    familyid:");
                     panel22.add(label5, new GridConstraints(0, 0, 1, 1,
                             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,

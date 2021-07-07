@@ -197,7 +197,7 @@ public class CDeviceManagementPanel extends JPanel {
                     panel3.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label1 ----
-                    label1.setText("deviceid:");
+                    label1.setText("     deviceid:");
                     panel3.add(label1, new GridConstraints(0, 0, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -276,7 +276,7 @@ public class CDeviceManagementPanel extends JPanel {
                     panel6.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label4 ----
-                    label4.setText("categoryid:");
+                    label4.setText("    categoryid:");
                     panel6.add(label4, new GridConstraints(0, 0, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -302,7 +302,7 @@ public class CDeviceManagementPanel extends JPanel {
                     panel8.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label5 ----
-                    label5.setText("familyid:");
+                    label5.setText("      familyid:");
                     panel8.add(label5, new GridConstraints(0, 0, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -328,7 +328,7 @@ public class CDeviceManagementPanel extends JPanel {
                     panel9.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label6 ----
-                    label6.setText("companyid");
+                    label6.setText("    companyid");
                     panel9.add(label6, new GridConstraints(0, 0, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
