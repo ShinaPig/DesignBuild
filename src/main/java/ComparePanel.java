@@ -1,5 +1,8 @@
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+import org.knowm.xchart.PieChart;
+import org.knowm.xchart.PieChartBuilder;
+import org.knowm.xchart.style.PieStyler;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

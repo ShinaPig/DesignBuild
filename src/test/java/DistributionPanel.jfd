@@ -106,6 +106,12 @@ new FormModel {
 					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
 					add( new FormComponent( "javax.swing.JComboBox" ) {
 						name: "comboBox1"
+						"model": new javax.swing.DefaultComboBoxModel {
+							selectedItem: "humidity"
+							addElement( "humidity" )
+							addElement( "temperature" )
+							addElement( "open" )
+						}
 					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
 						"column": 1
 					} )

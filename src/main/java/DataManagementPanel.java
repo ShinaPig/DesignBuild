@@ -44,13 +44,13 @@ public class DataManagementPanel extends JPanel {
 
             //======== Distribution ========
             {
-                Distribution.setLayout(new BorderLayout());
+                Distribution = new DistributionPanel();
             }
             tabbedPane1.addTab("Distribution", Distribution);
 
             //======== Summary ========
             {
-                Summary.setLayout(new BorderLayout());
+                Summary = new SummaryPanel();
             }
             tabbedPane1.addTab("Summary", Summary);
         }

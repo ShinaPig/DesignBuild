@@ -1,8 +1,14 @@
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+import org.knowm.xchart.*;
+import org.knowm.xchart.style.Styler;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 /*
  * Created by JFormDesigner on Tue Jul 06 23:43:41 CST 2021
  */
@@ -12,6 +18,9 @@ import java.awt.*;
  * @author ziyue ji
  */
 public class SummaryPanel extends JPanel {
+    final public String JDBC_URL = "jdbc:mysql://localhost:3306/designbuild";
+    final public String JDBC_USER = "root";
+    final public String JDBC_PASSWORD = "root";
     public SummaryPanel() {
         initComponents();
     }
@@ -107,7 +116,6 @@ public class SummaryPanel extends JPanel {
                 comboBox1.setModel(new DefaultComboBoxModel<>(new String[] {
                     "humidity",
                     "temperature",
-                    "open"
                 }));
                 panel5.add(comboBox1, new GridConstraints(0, 1, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
@@ -123,6 +131,7 @@ public class SummaryPanel extends JPanel {
 
             //---- button1 ----
             button1.setText("Statistics");
+            button1.addActionListener(e->searchbuttonActionPerformed(e));
             panel2.add(button1, new GridConstraints(1, 1, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -137,6 +146,41 @@ public class SummaryPanel extends JPanel {
         }
         add(panel6, BorderLayout.CENTER);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    }
+    private void searchbuttonActionPerformed(ActionEvent e) {
+        ArrayList<Integer> list1 = new ArrayList<>();
+        ArrayList<Integer> list2 = new ArrayList<>();
+        String sql=null;
+        sql="SELECT AVG(value),family.familyid FROM data,family,device WHERE dataname=? AND time>=? AND time<=? AND data.deviceid=device.deviceid AND device.familyid = family.familyid GROUP BY family.familyid";
+        try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
+            try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setString(1, String.valueOf(comboBox1.getSelectedItem())); // 注意：索引从1开始
+                ps.setTimestamp(2, new java.sql.Timestamp(((java.util.Date)spinner1.getValue()).getTime()));
+                ps.setTimestamp(3, new java.sql.Timestamp(((java.util.Date)spinner2.getValue()).getTime()));
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        list1.add(rs.getInt(1));
+                        list2.add(rs.getInt(2));
+                    }
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        for (Integer s : list1) {
+            System.out.println(s);
+        }
+        CategoryChart chart = ((((new CategoryChartBuilder()).width(300)).height(200)).title(comboBox1.getSelectedItem() +" summary")).xAxisTitle("familyid").yAxisTitle("Number").build();
+        Color[] sliceColors = new Color[]{new Color(224, 68, 14), new Color(230, 105, 62), new Color(236, 143, 110)};
+        chart.getStyler().setLegendPosition(Styler.LegendPosition.OutsideE);
+        chart.getStyler().setSeriesColors(sliceColors);
+        chart.getStyler().setHasAnnotations(false);
+        chart.getStyler().setToolTipsEnabled(true);
+        chart.getStyler().setPlotGridLinesVisible(false);
+        chart.addSeries((String) comboBox1.getSelectedItem(), list2, list1);
+        remove(panel6);
+        panel6 = new XChartPanel(chart);
+        add(panel6, BorderLayout.CENTER);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables

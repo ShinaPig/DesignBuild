@@ -33,7 +33,7 @@ public class DistributionPanel extends JPanel {
         textField2 = new JTextField();
         panel5 = new JPanel();
         label3 = new JLabel();
-        comboBox1 = new JComboBox();
+        comboBox1 = new JComboBox<>();
         button1 = new JButton();
 
         //======== this ========
@@ -165,6 +165,13 @@ public class DistributionPanel extends JPanel {
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                     null, null, null));
+
+                //---- comboBox1 ----
+                comboBox1.setModel(new DefaultComboBoxModel<>(new String[] {
+                    "humidity",
+                    "temperature",
+                    "open"
+                }));
                 panel5.add(comboBox1, new GridConstraints(0, 1, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -206,7 +213,7 @@ public class DistributionPanel extends JPanel {
     private JTextField textField2;
     private JPanel panel5;
     private JLabel label3;
-    private JComboBox comboBox1;
+    private JComboBox<String> comboBox1;
     private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
