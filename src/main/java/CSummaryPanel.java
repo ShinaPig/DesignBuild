@@ -1,6 +1,8 @@
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import org.knowm.xchart.*;
+import org.knowm.xchart.CategoryChart;
+import org.knowm.xchart.CategoryChartBuilder;
+import org.knowm.xchart.XChartPanel;
 import org.knowm.xchart.style.Styler;
 
 import javax.swing.*;
@@ -8,7 +10,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 /*
  * Created by JFormDesigner on Tue Jul 06 23:43:41 CST 2021
  */
@@ -17,11 +18,13 @@ import java.util.Arrays;
 /**
  * @author ziyue ji
  */
-public class SummaryPanel extends JPanel {
+public class CSummaryPanel extends JPanel {
+    private int companyid;
     final public String JDBC_URL = "jdbc:mysql://localhost:3306/designbuild";
     final public String JDBC_USER = "root";
     final public String JDBC_PASSWORD = "root";
-    public SummaryPanel() {
+    public CSummaryPanel(int companyid) {
+        this.companyid=companyid;
         initComponents();
     }
 
@@ -151,12 +154,12 @@ public class SummaryPanel extends JPanel {
         ArrayList<Integer> list1 = new ArrayList<>();
         ArrayList<Integer> list2 = new ArrayList<>();
         String sql=null;
-        sql="SELECT AVG(value),family.familyid FROM data,family,device WHERE dataname=? AND time>=? AND time<=? AND data.deviceid=device.deviceid AND device.familyid = family.familyid GROUP BY family.familyid";
+        sql="SELECT AVG(value),family.familyid FROM data,family,device WHERE dataname=? AND time>=? AND time<=? AND data.deviceid=device.deviceid AND device.familyid = family.familyid AND device.companyid="+companyid+" GROUP BY family.familyid";
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
                 ps.setString(1, String.valueOf(comboBox1.getSelectedItem())); // 注意：索引从1开始
-                ps.setTimestamp(2, new java.sql.Timestamp(((java.util.Date)spinner1.getValue()).getTime()));
-                ps.setTimestamp(3, new java.sql.Timestamp(((java.util.Date)spinner2.getValue()).getTime()));
+                ps.setTimestamp(2, new Timestamp(((java.util.Date)spinner1.getValue()).getTime()));
+                ps.setTimestamp(3, new Timestamp(((java.util.Date)spinner2.getValue()).getTime()));
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
                         list1.add(rs.getInt(1));

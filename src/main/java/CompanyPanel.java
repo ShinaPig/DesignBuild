@@ -12,7 +12,9 @@ import java.awt.*;
  * @author ziyue ji
  */
 public class CompanyPanel extends JFrame {
-    public CompanyPanel() {
+    private int companyid=-1;
+    public CompanyPanel(int companyid) {
+        this.companyid=companyid;
         initComponents();
     }
 
@@ -53,127 +55,19 @@ public class CompanyPanel extends JFrame {
 
                 //======== panel6 ========
                 {
-                    panel6.setLayout(new BorderLayout());
-
-                    //======== panel10 ========
-                    {
-                        panel10.setLayout(new BorderLayout());
-
-                        //======== panel11 ========
-                        {
-                            panel11.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
-
-                            //---- button11 ----
-                            button11.setText("Acquire");
-                            panel11.add(button11, new GridConstraints(0, 0, 1, 1,
-                                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null));
-
-                            //---- button12 ----
-                            button12.setText("Add");
-                            panel11.add(button12, new GridConstraints(0, 1, 1, 1,
-                                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null));
-
-                            //---- button13 ----
-                            button13.setText("Delete");
-                            panel11.add(button13, new GridConstraints(0, 2, 1, 1,
-                                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null));
-                        }
-                        panel10.add(panel11, BorderLayout.SOUTH);
-                    }
-                    panel6.add(panel10, BorderLayout.CENTER);
+                    panel6=new CDeviceManagementPanel(companyid);
                 }
                 tabbedPane1.addTab("Device Management", panel6);
 
                 //======== panel12 ========
                 {
-                    panel12.setLayout(new BorderLayout());
-
-                    //======== panel13 ========
-                    {
-                        panel13.setLayout(new BorderLayout());
-
-                        //======== panel14 ========
-                        {
-                            panel14.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
-
-                            //---- button15 ----
-                            button15.setText("Acquire");
-                            panel14.add(button15, new GridConstraints(0, 0, 1, 1,
-                                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null));
-
-                            //---- button16 ----
-                            button16.setText("Add");
-                            panel14.add(button16, new GridConstraints(0, 1, 1, 1,
-                                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null));
-
-                            //---- button17 ----
-                            button17.setText("Delete");
-                            panel14.add(button17, new GridConstraints(0, 2, 1, 1,
-                                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null));
-                        }
-                        panel13.add(panel14, BorderLayout.SOUTH);
-                    }
-                    panel12.add(panel13, BorderLayout.CENTER);
+                    panel12 = new CCategoryManagementPanel(companyid);
                 }
                 tabbedPane1.addTab("Category Management", panel12);
 
                 //======== panel15 ========
                 {
-                    panel15.setLayout(new BorderLayout());
-
-                    //======== panel16 ========
-                    {
-                        panel16.setLayout(new BorderLayout());
-
-                        //======== panel17 ========
-                        {
-                            panel17.setLayout(new GridLayoutManager(1, 3, new Insets(0, 0, 0, 0), -1, -1));
-
-                            //---- button18 ----
-                            button18.setText("Acquire");
-                            panel17.add(button18, new GridConstraints(0, 0, 1, 1,
-                                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null));
-
-                            //---- button19 ----
-                            button19.setText("Add");
-                            panel17.add(button19, new GridConstraints(0, 1, 1, 1,
-                                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null));
-
-                            //---- button20 ----
-                            button20.setText("Delete");
-                            panel17.add(button20, new GridConstraints(0, 2, 1, 1,
-                                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null));
-                        }
-                        panel16.add(panel17, BorderLayout.SOUTH);
-                    }
-                    panel15.add(panel16, BorderLayout.CENTER);
+                    panel15 = new CDataManagementPanel(companyid);
                 }
                 tabbedPane1.addTab("Data Management", panel15);
             }

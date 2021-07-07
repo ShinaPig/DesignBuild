@@ -18,11 +18,13 @@ import java.util.List;
 /**
  * @author ziyue ji
  */
-public class DeviceManagementPanel extends JPanel {
+public class CDeviceManagementPanel extends JPanel {
+    private int companyid=-1;
     final public String JDBC_URL = "jdbc:mysql://localhost:3306/designbuild";
     final public String JDBC_USER = "root";
     final public String JDBC_PASSWORD = "root";
-    public DeviceManagementPanel() {
+    public CDeviceManagementPanel(int companyid) {
+        this.companyid=companyid;
         initComponents();
     }
 
@@ -133,7 +135,7 @@ public class DeviceManagementPanel extends JPanel {
                         textField3.setText((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 2));
                         textField4.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 3)));
                         textField5.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 4)));
-                        textField6.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 5)));
+//                        textField6.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 5)));
                     }
                 }
             });
@@ -167,7 +169,6 @@ public class DeviceManagementPanel extends JPanel {
                     "devicename",
                     "categoryid",
                     "familyid",
-                    "companyid"
                 }));
                 this2.add(searchbox, new GridConstraints(0, 1, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
@@ -336,6 +337,8 @@ public class DeviceManagementPanel extends JPanel {
 
                     //---- textField6 ----
                     textField6.setColumns(8);
+                    textField6.setEditable(false);
+                    textField6.setText(String.valueOf(companyid));
                     panel9.add(textField6, new GridConstraints(0, 1, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -353,7 +356,7 @@ public class DeviceManagementPanel extends JPanel {
         add(panel1, BorderLayout.CENTER);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }
-    public Object[][] queryUserData(java.util.List<Device> list) {
+    public Object[][] queryUserData(List<Device> list) {
 //        java.util.List<User> list=this.queryAllUser();
         Object[][] data=new Object[list.size()][6];
         for(int i=0;i<list.size();i++){
@@ -366,11 +369,12 @@ public class DeviceManagementPanel extends JPanel {
         }
         return data;
     }
-    public java.util.List<Device> queryAllUser(){
-        String sql="select * from device";
-        java.util.List<Device> list=new ArrayList<>();
+    public List<Device> queryAllUser(){
+        String sql="select * from device where companyid=?";
+        List<Device> list=new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1,companyid);
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
                         Device device=new Device();
@@ -391,18 +395,16 @@ public class DeviceManagementPanel extends JPanel {
     }
     private void searchbuttonActionPerformed(ActionEvent e) {
         String sql=null;
-        if(searchbox.getSelectedIndex()==0)sql="SELECT * FROM device WHERE deviceid=?";
-        if(searchbox.getSelectedIndex()==1)sql="SELECT * FROM device WHERE devicename=?";
-        if(searchbox.getSelectedIndex()==2)sql="SELECT * FROM device WHERE categoryid=?";
-        if(searchbox.getSelectedIndex()==3)sql="SELECT * FROM device WHERE familyid=?";
-        if(searchbox.getSelectedIndex()==4)sql="SELECT * FROM device WHERE companyid=?";
-        java.util.List<Device> list=new ArrayList<>();
+        if(searchbox.getSelectedIndex()==0)sql="SELECT * FROM device WHERE deviceid=? AND companyid="+companyid;
+        if(searchbox.getSelectedIndex()==1)sql="SELECT * FROM device WHERE devicename=? AND companyid="+companyid;
+        if(searchbox.getSelectedIndex()==2)sql="SELECT * FROM device WHERE categoryid=? AND companyid="+companyid;
+        if(searchbox.getSelectedIndex()==3)sql="SELECT * FROM device WHERE familyid=? AND companyid="+companyid;
+        List<Device> list=new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                if(searchbox.getSelectedIndex()==0)ps.setInt(1, Integer.valueOf(searchtext.getText().trim())); // 注意：索引从1开始
-                if(searchbox.getSelectedIndex()==2)ps.setInt(1, Integer.valueOf(searchtext.getText().trim())); // 注意：索引从1开始
-                if(searchbox.getSelectedIndex()==3)ps.setInt(1, Integer.valueOf(searchtext.getText().trim())); // 注意：索引从1开始
-                if(searchbox.getSelectedIndex()==4)ps.setInt(1, Integer.valueOf(searchtext.getText().trim())); // 注意：索引从1开始
+                if(searchbox.getSelectedIndex()==0)ps.setInt(1, Integer.parseInt(searchtext.getText().trim())); // 注意：索引从1开始
+                if(searchbox.getSelectedIndex()==2)ps.setInt(1, Integer.parseInt(searchtext.getText().trim())); // 注意：索引从1开始
+                if(searchbox.getSelectedIndex()==3)ps.setInt(1, Integer.parseInt(searchtext.getText().trim())); // 注意：索引从1开始
                 if(searchbox.getSelectedIndex()==1)ps.setString(1, (searchtext.getText().trim())); // 注意：索引从1开始
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
@@ -435,10 +437,11 @@ public class DeviceManagementPanel extends JPanel {
     }
     private void button2ActionPerformed(ActionEvent e) {
         String sql=null;
-        sql="SELECT * FROM device";
-        java.util.List<Device> list=new ArrayList<>();
+        sql="SELECT * FROM device WHERE companyid=?";
+        List<Device> list=new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
+                ps.setInt(1,companyid);
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
                         Device device=new Device();
