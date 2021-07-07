@@ -1,8 +1,17 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.security.GeneralSecurityException;
+import java.security.SecureRandom;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -22,6 +31,12 @@ public class UserManagementPanel extends JPanel {
     final public String JDBC_URL = "jdbc:mysql://localhost:3306/designbuild";
     final public String JDBC_USER = "root";
     final public String JDBC_PASSWORD = "root";
+    public byte[] key;
+
+    {
+        key = "1234567890abcdef".getBytes(StandardCharsets.UTF_8);
+    }
+
     public UserManagementPanel() {
         initComponents();
     }
@@ -133,7 +148,8 @@ public class UserManagementPanel extends JPanel {
                     if(selectedRow.length!=0){
                         textField2.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 0)));
                         textField3.setText((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 1));
-                        textField4.setText((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 2));
+                        byte[] decrypted = Base64.getDecoder().decode((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 2));
+                        textField4.setText(new String(decrypted));
                         textField5.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 3)));
                     }
                 }
@@ -220,6 +236,7 @@ public class UserManagementPanel extends JPanel {
 
                     //---- textField4 ----
                     textField4.setColumns(8);
+                    textField4.putClientProperty("JPasswordField.cutCopyAllowed",true);
                     panel21.add(textField4, new GridConstraints(0, 1, 1, 1,
                             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -318,7 +335,7 @@ public class UserManagementPanel extends JPanel {
                         User user=new User();
                         user.setUserid(rs.getInt(1));
                         user.setUsername(rs.getString(2));
-                        user.setPassword(rs.getString(3));
+                        user.setPassword(Base64.getEncoder().encodeToString(rs.getString(3).getBytes()));
                         user.setFamilyid(rs.getInt(4));
                         list.add(user);
                     }
@@ -337,15 +354,15 @@ public class UserManagementPanel extends JPanel {
         List<User> list=new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
             try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                if(searchbox.getSelectedIndex()==0)ps.setInt(1, Integer.valueOf(searchtext.getText().trim())); // 注意：索引从1开始
+                if(searchbox.getSelectedIndex()==0)ps.setInt(1, Integer.parseInt(searchtext.getText().trim())); // 注意：索引从1开始
                 if(searchbox.getSelectedIndex()==1)ps.setString(1, (searchtext.getText().trim())); // 注意：索引从1开始
-                if(searchbox.getSelectedIndex()==2)ps.setInt(1, Integer.valueOf(searchtext.getText().trim())); // 注意：索引从1开始
+                if(searchbox.getSelectedIndex()==2)ps.setInt(1, Integer.parseInt(searchtext.getText().trim())); // 注意：索引从1开始
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
                         User user=new User();
                         user.setUserid(rs.getInt(1));
                         user.setUsername(rs.getString(2));
-                        user.setPassword(rs.getString(3));
+                        user.setPassword(Base64.getEncoder().encodeToString(rs.getString(3).getBytes()));
                         user.setFamilyid(rs.getInt(4));
                         list.add(user);
                     }
@@ -378,7 +395,7 @@ public class UserManagementPanel extends JPanel {
                         User user=new User();
                         user.setUserid(rs.getInt(1));
                         user.setUsername(rs.getString(2));
-                        user.setPassword(rs.getString(3));
+                        user.setPassword(Base64.getEncoder().encodeToString(rs.getString(3).getBytes()));
                         user.setFamilyid(rs.getInt(4));
                         list.add(user);
                     }
@@ -410,7 +427,7 @@ public class UserManagementPanel extends JPanel {
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
                     ps.setInt(1, Integer.valueOf(textField2.getText().trim()));
                     int n = ps.executeUpdate();
-                    if(n!=0)JOptionPane.showMessageDialog(null, "Reset password successfully!");
+                    if(n!=0)JOptionPane.showMessageDialog(null, "Reset password='123456789' successfully!");
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -490,6 +507,21 @@ public class UserManagementPanel extends JPanel {
                 throwables.printStackTrace();
             }
         }
+    }
+    // 加密:
+    public static byte[] encrypt(byte[] key, byte[] input) throws GeneralSecurityException {
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        SecretKey keySpec = new SecretKeySpec(key, "AES");
+        cipher.init(Cipher.ENCRYPT_MODE, keySpec);
+        return cipher.doFinal(input);
+    }
+
+    // 解密:
+    public static byte[] decrypt(byte[] key, byte[] input) throws GeneralSecurityException {
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+        SecretKey keySpec = new SecretKeySpec(key, "AES");
+        cipher.init(Cipher.DECRYPT_MODE, keySpec);
+        return cipher.doFinal(input);
     }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panel7;

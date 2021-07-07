@@ -43,6 +43,7 @@ public class Login extends JFrame {
         label1.setText("Welcome to Mangament System");
         label1.setHorizontalAlignment(SwingConstants.CENTER);
         label1.setFont(new Font("Sarasa UI SC", Font.PLAIN, 22));
+        label1.setIcon(new ImageIcon(getClass().getResource("/outline_home_black_48dp.png")));
         contentPane.add(label1, new GridConstraints(0, 0, 1, 1,
             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -66,6 +67,7 @@ public class Login extends JFrame {
 
             //---- label2 ----
             label2.setText("username:");
+            label2.setIcon(new ImageIcon(getClass().getResource("/outline_account_circle_black_24dp.png")));
             panel1.add(label2, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -92,6 +94,7 @@ public class Login extends JFrame {
 
             //---- label3 ----
             label3.setText("password:");
+            label3.setIcon(new ImageIcon(getClass().getResource("/outline_password_black_24dp.png")));
             panel2.add(label3, new GridConstraints(0, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -114,6 +117,7 @@ public class Login extends JFrame {
 
         //---- button1 ----
         button1.setText("Login");
+        button1.setIcon(new ImageIcon(getClass().getResource("/outline_login_black_24dp.png")));
         contentPane.add(button1, new GridConstraints(4, 0, 1, 1,
             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
