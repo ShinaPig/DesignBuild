@@ -340,7 +340,8 @@ public class CCategoryManagementPanel extends JPanel {
                     ps.setInt(2, Integer.parseInt(textField2.getText().trim()));
                     if(textField3.getText().isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
-                        if(n!=0)JOptionPane.showMessageDialog(null, "Update the category information successfully!");}
+                        if(n!=0)JOptionPane.showMessageDialog(null, "Update the category information successfully!");
+                        if(n==0)JOptionPane.showMessageDialog(null, "Update wrong!", "Error!",JOptionPane.WARNING_MESSAGE);}
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -361,7 +362,8 @@ public class CCategoryManagementPanel extends JPanel {
                     //ps.setInt(4, Integer.parseInt(textField2.getText().trim()));
                     if(textField3.getText().isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
-                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the category information successfully!");}
+                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the category information successfully!");
+                        if(n==0)JOptionPane.showMessageDialog(null, "Add wrong!", "Error!",JOptionPane.WARNING_MESSAGE);}
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -400,6 +402,9 @@ public class CCategoryManagementPanel extends JPanel {
                             sql = "DELETE category FROM category WHERE categoryid=?";
                             try (PreparedStatement ps2 = conn.prepareStatement(sql)) {
                                 ps2.setInt(1, Integer.parseInt(textField2.getText().trim()));
+                                int n = ps2.executeUpdate();
+                                if(n!=0)JOptionPane.showMessageDialog(null, "Delete the category successfully!");
+                                if(n==0)JOptionPane.showMessageDialog(null, "Update wrong!", "Error!",JOptionPane.WARNING_MESSAGE);
                             } catch (SQLException throwables) {
 //                    JOptionPane.showMessageDialog(null, "Categoryid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
                                 throwables.printStackTrace();

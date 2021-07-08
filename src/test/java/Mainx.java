@@ -14,7 +14,6 @@ public class Mainx {
         // 加密:
         byte[] data = message.getBytes("UTF-8");
         byte[] encrypted = encrypt(key, data);
-        for(int i=0;i<16;i++) System.out.println(encrypted[i]);
         System.out.println("Encrypted: " + Base64.getEncoder().encodeToString(encrypted));
         // 解密:
         byte[] decrypted = decrypt(key, encrypted);

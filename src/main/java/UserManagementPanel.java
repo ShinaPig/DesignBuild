@@ -148,7 +148,13 @@ public class UserManagementPanel extends JPanel {
                     if(selectedRow.length!=0){
                         textField2.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 0)));
                         textField3.setText((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 1));
-                        byte[] decrypted = Base64.getDecoder().decode((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 2));
+                        byte[] encrypted = hexStringToByteArray((String) Usertable.getValueAt(selectedRow[selectedRow.length-1], 2));
+                        byte[] decrypted = new byte[0];
+                        try {
+                            decrypted = decrypt(key, encrypted);
+                        } catch (GeneralSecurityException generalSecurityException) {
+                            generalSecurityException.printStackTrace();
+                        }
                         textField4.setText(new String(decrypted));
                         textField5.setText(String.valueOf(Usertable.getValueAt(selectedRow[selectedRow.length-1], 3)));
                     }
@@ -254,7 +260,7 @@ public class UserManagementPanel extends JPanel {
                     panel22.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label5 ----
-                    label5.setText("    familyid:");
+                    label5.setText("   familyid:");
                     panel22.add(label5, new GridConstraints(0, 0, 1, 1,
                             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -335,7 +341,7 @@ public class UserManagementPanel extends JPanel {
                         User user=new User();
                         user.setUserid(rs.getInt(1));
                         user.setUsername(rs.getString(2));
-                        user.setPassword(Base64.getEncoder().encodeToString(rs.getString(3).getBytes()));
+                        user.setPassword(rs.getString(3));
                         user.setFamilyid(rs.getInt(4));
                         list.add(user);
                     }
@@ -362,7 +368,7 @@ public class UserManagementPanel extends JPanel {
                         User user=new User();
                         user.setUserid(rs.getInt(1));
                         user.setUsername(rs.getString(2));
-                        user.setPassword(Base64.getEncoder().encodeToString(rs.getString(3).getBytes()));
+                        user.setPassword(rs.getString(3));
                         user.setFamilyid(rs.getInt(4));
                         list.add(user);
                     }
@@ -395,7 +401,7 @@ public class UserManagementPanel extends JPanel {
                         User user=new User();
                         user.setUserid(rs.getInt(1));
                         user.setUsername(rs.getString(2));
-                        user.setPassword(Base64.getEncoder().encodeToString(rs.getString(3).getBytes()));
+                        user.setPassword(rs.getString(3));
                         user.setFamilyid(rs.getInt(4));
                         list.add(user);
                     }
@@ -421,13 +427,16 @@ public class UserManagementPanel extends JPanel {
         if(JOptionPane.showConfirmDialog(null, "Sure to reset the password?", "Reset Password",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
         {
             String sql = null;
-            sql = "UPDATE user SET password = '123456789' WHERE userid=?";
+            sql = "UPDATE user SET password = HEX(AES_ENCRYPT(?, '1234567890abcdef')) WHERE userid=?";
             List<User> list = new ArrayList<>();
             try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
-                    ps.setInt(1, Integer.valueOf(textField2.getText().trim()));
+                    int x = (int) (Math.random()*1000000000);
+                    ps.setString(1, String.valueOf(x));
+                    ps.setInt(2, Integer.valueOf(textField2.getText().trim()));
                     int n = ps.executeUpdate();
-                    if(n!=0)JOptionPane.showMessageDialog(null, "Reset password='123456789' successfully!");
+                    if(n!=0)JOptionPane.showMessageDialog(null, "Reset password='"+x+"' successfully!");
+                    if(n==0)JOptionPane.showMessageDialog(null, "Reset wrong!", "Error!",JOptionPane.WARNING_MESSAGE);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -440,7 +449,7 @@ public class UserManagementPanel extends JPanel {
         if(JOptionPane.showConfirmDialog(null, "Sure to update the user information?", "Update",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
         {
             String sql = null;
-            sql = "UPDATE user SET username=? , password = ? , familyid = ? WHERE userid=?";
+            sql = "UPDATE user SET username=? , password = HEX(AES_ENCRYPT(?, '1234567890abcdef')) , familyid = ? WHERE userid=?";
             List<User> list = new ArrayList<>();
             try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -450,7 +459,8 @@ public class UserManagementPanel extends JPanel {
                     ps.setInt(4, Integer.parseInt(textField2.getText().trim()));
                     if(textField3.getText().isEmpty()||String.valueOf(textField4.getPassword()).isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
-                    if(n!=0)JOptionPane.showMessageDialog(null, "Update the user information successfully!");}
+                    if(n!=0)JOptionPane.showMessageDialog(null, "Update the user information successfully!");
+                        if(n==0)JOptionPane.showMessageDialog(null, "Update wrong!", "Error!",JOptionPane.WARNING_MESSAGE);}
                 } catch (SQLException throwables) {
                     JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
                     throwables.printStackTrace();
@@ -464,7 +474,7 @@ public class UserManagementPanel extends JPanel {
         if(JOptionPane.showConfirmDialog(null, "Sure to add the user?", "Add",JOptionPane.YES_NO_OPTION)==0) //返回值为0或1
         {
             String sql = null;
-            sql = "INSERT INTO user (username, password, familyid) VALUES (?,?,?)";
+            sql = "INSERT INTO user (username, password, familyid) VALUES (?,HEX(AES_ENCRYPT(?, '1234567890abcdef')),?)";
             List<User> list = new ArrayList<>();
             try (Connection conn = DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASSWORD)) {
                 try (PreparedStatement ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
@@ -474,7 +484,8 @@ public class UserManagementPanel extends JPanel {
                     //ps.setInt(4, Integer.parseInt(textField2.getText().trim()));
                     if(textField3.getText().isEmpty()||String.valueOf(textField4.getPassword()).isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
-                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the user information successfully!");}
+                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the user information successfully!");
+                        if(n==0)JOptionPane.showMessageDialog(null, "Add wrong!", "Error!",JOptionPane.WARNING_MESSAGE);}
                 } catch (SQLException throwables) {
                     JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
                     throwables.printStackTrace();
@@ -499,6 +510,7 @@ public class UserManagementPanel extends JPanel {
 //                    if(textField3.getText().isEmpty()||String.valueOf(textField4.getPassword()).isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     int n = ps.executeUpdate();
                     if(n!=0)JOptionPane.showMessageDialog(null, "Delete the user information successfully!");
+                    if(n==0)JOptionPane.showMessageDialog(null, "Delete wrong!", "Error!",JOptionPane.WARNING_MESSAGE);
                 } catch (SQLException throwables) {
 //                    JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
                     throwables.printStackTrace();
@@ -522,6 +534,15 @@ public class UserManagementPanel extends JPanel {
         SecretKey keySpec = new SecretKeySpec(key, "AES");
         cipher.init(Cipher.DECRYPT_MODE, keySpec);
         return cipher.doFinal(input);
+    }
+    public static byte[] hexStringToByteArray(String s) {
+        int len = s.length();
+        byte[] data = new byte[len / 2];
+        for (int i = 0; i < len; i += 2) {
+            data[i / 2] = (byte) ((Character.digit(s.charAt(i), 16) << 4)
+                    + Character.digit(s.charAt(i+1), 16));
+        }
+        return data;
     }
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JPanel panel7;

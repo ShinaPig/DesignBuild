@@ -23,7 +23,9 @@ public class Login extends JFrame {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         label1 = new JLabel();
+        panel3 = new JPanel();
         comboBox1 = new JComboBox<>();
+        radioButton1 = new JRadioButton();
         panel1 = new JPanel();
         label2 = new JLabel();
         textField1 = new JTextField();
@@ -49,12 +51,30 @@ public class Login extends JFrame {
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
-        //---- comboBox1 ----
-        comboBox1.setModel(new DefaultComboBoxModel<>(new String[] {
-            "Admin",
-            "Company"
-        }));
-        contentPane.add(comboBox1, new GridConstraints(1, 0, 1, 1,
+        //======== panel3 ========
+        {
+            panel3.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
+
+            //---- comboBox1 ----
+            comboBox1.setModel(new DefaultComboBoxModel<>(new String[] {
+                "Admin",
+                "Company"
+            }));
+            panel3.add(comboBox1, new GridConstraints(0, 0, 1, 1,
+                GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                null, null, null));
+
+            //---- radioButton1 ----
+            radioButton1.setText("Dark Model");
+            panel3.add(radioButton1, new GridConstraints(0, 1, 1, 1,
+                GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                null, null, null));
+        }
+        contentPane.add(panel3, new GridConstraints(1, 0, 1, 1,
             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -126,7 +146,9 @@ public class Login extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JLabel label1;
+    private JPanel panel3;
     private JComboBox<String> comboBox1;
+    private JRadioButton radioButton1;
     private JPanel panel1;
     private JLabel label2;
     private JTextField textField1;

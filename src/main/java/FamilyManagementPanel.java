@@ -338,7 +338,8 @@ public class FamilyManagementPanel extends JPanel {
                     ps.setInt(2, Integer.parseInt(textField2.getText().trim()));
                     if(textField3.getText().isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
-                        if(n!=0)JOptionPane.showMessageDialog(null, "Update the family information successfully!");}
+                        if(n!=0)JOptionPane.showMessageDialog(null, "Update the family information successfully!");
+                        if(n==0)JOptionPane.showMessageDialog(null, "Update wrong!", "Error!",JOptionPane.WARNING_MESSAGE);}
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -359,7 +360,8 @@ public class FamilyManagementPanel extends JPanel {
                     //ps.setInt(4, Integer.parseInt(textField2.getText().trim()));
                     if(textField3.getText().isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
-                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the family information successfully!");}
+                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the family information successfully!");
+                        if(n==0)JOptionPane.showMessageDialog(null, "Add wrong!", "Error!",JOptionPane.WARNING_MESSAGE);}
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }

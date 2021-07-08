@@ -484,7 +484,8 @@ public class DeviceManagementPanel extends JPanel {
                     ps.setInt(6, Integer.parseInt(textField1.getText().trim()));
                     if(textField2.getText().isEmpty()||textField4.getText().isEmpty()||textField5.getText().isEmpty()||textField6.getText().isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
-                        if(n!=0)JOptionPane.showMessageDialog(null, "Update the device information successfully!");}
+                        if(n!=0)JOptionPane.showMessageDialog(null, "Update the device information successfully!");
+                        if(n==0)JOptionPane.showMessageDialog(null, "Update wrong!", "Error!",JOptionPane.WARNING_MESSAGE);}
                 } catch (SQLException throwables) {
                     JOptionPane.showMessageDialog(null, "Some fields are wrong!", "Error!",JOptionPane.ERROR_MESSAGE);
                     throwables.printStackTrace();
@@ -508,7 +509,8 @@ public class DeviceManagementPanel extends JPanel {
                     ps.setInt(5, Integer.parseInt(textField6.getText().trim()));
                     if(textField2.getText().isEmpty()||textField4.getText().isEmpty()||textField5.getText().isEmpty()||textField6.getText().isEmpty())JOptionPane.showMessageDialog(null, "Fields cannot be empty!", "Error!",JOptionPane.ERROR_MESSAGE);
                     else{int n = ps.executeUpdate();
-                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the device information successfully!");}
+                        if(n!=0)JOptionPane.showMessageDialog(null, "Add the device information successfully!");
+                        if(n==0)JOptionPane.showMessageDialog(null, "Add wrong!", "Error!",JOptionPane.WARNING_MESSAGE);}
                 } catch (SQLException throwables) {
                     JOptionPane.showMessageDialog(null, "Some fields are wrong!", "Error!",JOptionPane.ERROR_MESSAGE);
                     throwables.printStackTrace();
@@ -535,7 +537,9 @@ public class DeviceManagementPanel extends JPanel {
                 sql = "DELETE device FROM device WHERE device.deviceid=?";
                 try (PreparedStatement ps = conn.prepareStatement(sql)) {
                     ps.setInt(1, Integer.parseInt(textField1.getText().trim()));
-                    if(ps.executeUpdate()!=0)JOptionPane.showMessageDialog(null, "Delete the device information successfully!");
+                    int n=ps.executeUpdate();
+                    if(n!=0)JOptionPane.showMessageDialog(null, "Delete the device information successfully!");
+                    if(n==0)JOptionPane.showMessageDialog(null, "Delete wrong!", "Error!",JOptionPane.WARNING_MESSAGE);
                 } catch (SQLException throwables) {
 //                    JOptionPane.showMessageDialog(null, "Familyid cannot be found!", "Error!",JOptionPane.ERROR_MESSAGE);
                     throwables.printStackTrace();
