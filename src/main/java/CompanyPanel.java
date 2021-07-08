@@ -19,6 +19,7 @@ public class CompanyPanel extends JFrame {
     }
 
     private void initComponents() {
+        this.setIconImage((new ImageIcon(getClass().getResource("/home2.png")).getImage()));
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         panel2 = new JPanel();
         tabbedPane1 = new JTabbedPane();

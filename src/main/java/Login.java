@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-import java.util.Objects;
 import javax.swing.*;
 
 import com.formdev.flatlaf.FlatDarkLaf;
@@ -61,6 +60,7 @@ public class Login extends JFrame {
         }
     }
     private void initComponents() {
+        this.setIconImage((new ImageIcon(getClass().getResource("/home2.png")).getImage()));
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         label1 = new JLabel();
         comboBox1 = new JComboBox<>();
@@ -83,6 +83,8 @@ public class Login extends JFrame {
 
         //---- label1 ----
         label1.setText("Welcome to Mangament System");
+        NoScalingIcon icon = new NoScalingIcon(new ImageIcon(getClass().getResource("/home.png")));
+        label1.setIcon(icon);
         label1.setHorizontalAlignment(SwingConstants.CENTER);
         label1.setFont(new Font("Sarasa UI SC", Font.PLAIN, 22));
         contentPane.add(label1, new GridConstraints(0, 0, 1, 1,
@@ -107,7 +109,7 @@ public class Login extends JFrame {
                     null, null, null));
 
             //---- radioButton1 ----
-            radioButton1.setText("Dark Model");
+            radioButton1.setText("Dark Mode");
             radioButton1.addItemListener(e -> {
                 if (radioButton1.isSelected())
                 {
@@ -136,6 +138,8 @@ public class Login extends JFrame {
 
             //---- label2 ----
             label2.setText("       Userid: ");
+            NoScalingIcon icon2 = new NoScalingIcon(new ImageIcon(getClass().getResource("/manager.png")));
+            label2.setIcon(icon2);
             panel1.add(label2, new GridConstraints(0, 0, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -161,7 +165,9 @@ public class Login extends JFrame {
             panel2.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
             //---- label3 ----
-            label3.setText(" Password: ");
+            label3.setText("  Password: ");
+            NoScalingIcon icon3 = new NoScalingIcon(new ImageIcon(getClass().getResource("/key.png")));
+            label3.setIcon(icon3);
             panel2.add(label3, new GridConstraints(0, 0, 1, 1,
                     GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                     GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -183,6 +189,8 @@ public class Login extends JFrame {
                 null, null, null));
         //---- button1 ----
         button1.setText("Login");
+        NoScalingIcon icon4 = new NoScalingIcon(new ImageIcon(getClass().getResource("/next.png")));
+        button1.setIcon(icon4);
         button1.addActionListener(e->button1ActionPerformed(e));
         contentPane.add(button1, new GridConstraints(4, 0, 1, 1,
                 GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,

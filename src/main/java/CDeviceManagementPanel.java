@@ -139,7 +139,7 @@ public class CDeviceManagementPanel extends JPanel {
                     }
                 }
             });
-            scrollPane1.setPreferredSize(new Dimension(453, 380));
+            scrollPane1.setPreferredSize(new Dimension(453, 360));
 
             //---- Usertable ----
             scrollPane1.setViewportView(Usertable);
@@ -224,7 +224,7 @@ public class CDeviceManagementPanel extends JPanel {
                     panel4.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label2 ----
-                    label2.setText("devicename:");
+                    label2.setText(" devicename:");
                     panel4.add(label2, new GridConstraints(0, 0, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -302,7 +302,7 @@ public class CDeviceManagementPanel extends JPanel {
                     panel8.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1));
 
                     //---- label5 ----
-                    label5.setText("      familyid:");
+                    label5.setText("     familyid:");
                     panel8.add(label5, new GridConstraints(0, 0, 1, 1,
                         GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,

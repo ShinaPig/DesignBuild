@@ -45,6 +45,7 @@ public class Login extends JFrame {
         label1.setText("Welcome to Mangament System");
         label1.setHorizontalAlignment(SwingConstants.CENTER);
         label1.setFont(new Font("Sarasa UI SC", Font.PLAIN, 22));
+        label1.setIcon(new ImageIcon(getClass().getResource("/home.png")));
         contentPane.add(label1, new GridConstraints(0, 0, 1, 1,
             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
